@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom';
-import loginDetails from '../data/loginDetails.json';
-import { useAuth } from '../AuthContext';
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import loginDetails from "../data/loginDetails.json";
+import { useAuth } from "../AuthContext";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -11,17 +11,17 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
 
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
+    email: "",
+    password: "",
+  });
   const { email, password } = formData;
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value })
-  }
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (loginDetails.email === email && loginDetails.password === password) {
       let formData = new FormData(e.currentTarget);
@@ -31,27 +31,39 @@ const Login = () => {
         navigate(from, { replace: true });
       });
       return;
+    } else {
+      alert("Email: dhaya@email.com \n Password: dhaya");
     }
-  }
+  };
 
   return (
     <div>
-
       <form onSubmit={handleSubmit} className="login-form">
         <h3>Login</h3>
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" name="email" id="email" onChange={handleChange} value={email} />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            onChange={handleChange}
+            value={email}
+          />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" onChange={handleChange} value={password} />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            onChange={handleChange}
+            value={password}
+          />
         </div>
         <button type="submit">Login</button>
-
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
