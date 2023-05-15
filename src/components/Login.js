@@ -43,6 +43,7 @@ const Login = () => {
         <div>
           <label htmlFor="email">Email:</label>
           <input
+            placeholder="dhaya@email.com"
             type="email"
             name="email"
             id="email"
@@ -53,6 +54,7 @@ const Login = () => {
         <div>
           <label htmlFor="password">Password:</label>
           <input
+            placeholder="dhaya"
             type="password"
             name="password"
             id="password"
